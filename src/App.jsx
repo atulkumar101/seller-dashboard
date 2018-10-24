@@ -40,12 +40,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      {JSON.stringify(this.props)}
-      {this.props.user}
+      {
+        // JSON.stringify(this.props)
+      }
+      {
+        // this.props.user
+      }
         {this.props.user && this.props.user !==null ? this.props.history.push('/sellerdashboard') : ''}
 
-        <div>          
-          <h2 className="apptitle">Seller DashBoard</h2>
+        <div className="apptitle TextBigSize TextRed">          
+           Seller DashBoard
         </div>
         <Input type="text" name="username" placeholder="username" 
         onChange={event => this.setState({ username: event.target.value })}

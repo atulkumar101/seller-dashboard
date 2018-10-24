@@ -3,6 +3,7 @@ import EditProductModal from './EditProductModal';
 import Button from '@material-ui/core/Button';
 import down from './download.jpg';
 import {connect} from 'react-redux';
+import '../App.css';
 
 import {deleteProduct} from '../actions';
 
@@ -39,6 +40,7 @@ class ProductList extends Component{
 
         return(
             <div className="App">
+            <div className="ProductCard">
                 {/* <h2>Product List</h2> */}
                 <div>
                 {/* <div>{JSON.stringify(product)}</div> */}
@@ -46,25 +48,24 @@ class ProductList extends Component{
                     <div style={{height:"250px", width:"250px", margin:"0px auto"}}>
                         <img src={down} alt="downloadimage" height="240px" width="240px" />
                     </div>
-                    <div>
-                        <h4>{product.productname}</h4>
-                        <h4>{product.productprice}</h4>
+                    <div className="ProductDescription">
+                        <div>Name : {product.productname}</div>
+                        <div>Price : {product.productprice}</div>
+                        <div>About Product : {product.productdescription}</div>
                     </div>
-                    <div>
-                        <h4>{product.productdescription}</h4>
-                    </div>
+                    <div className="MarginTop">
                     <EditProductModal
                         product = {product} 
                         onEditProduct = { 
                             this.editProduct
                         }
                     />
+                    </div>
                     {/* <Button variant="contained" color="primary"
                         onClick={this.editProduct}
                     >
                         EDIT PRODUCT
                     </Button> */}
-                    {" "}
                     <Button variant="contained" color="primary"
                         onClick={this.deleteProduct}
                         // onClick={this.props.deleteProduct(product)
@@ -74,6 +75,7 @@ class ProductList extends Component{
                     
                     
                 </div>
+            </div>
             </div>
         )
     }

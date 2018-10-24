@@ -4,11 +4,7 @@ import { userExist } from "./actions";
 import ProductList from './components/ProductList';
 import AddProductModal from './components/AddProductModal';
 import Button from '@material-ui/core/Button';
-
-// const PRODUCTS = [
-//     {productname: "android 1", productprice: "10000", productdescription:"some description 1"},
-//     {productname: "android 2", productprice: "20000", productdescription:"some description 2"},
-// ];
+import './App.css';
 
 
 class SellerDashBoard extends Component{
@@ -80,23 +76,33 @@ class SellerDashBoard extends Component{
 
         return(
             <div className="App">
-
-                <div>{JSON.stringify(this.props)}</div>
+            <div>
+                <div>
+                {
+                    // JSON.stringify(this.props)
+                }
+                </div>
                 <Button variant="contained" color="primary"
                     style = {{float: 'right'}}
                     onClick={this.signout}
                 >
                     Signout
                 </Button>
-                <h2>Seller DashBoard</h2>
-                <div>{JSON.stringify(this.props.productList)}</div>
-                <h4>--</h4>
+                <div className="apptitle TextBigSize TextRed">          
+                    Seller DashBoard
+                </div>
+                <div>
+                {
+                    // JSON.stringify(this.props.productList)
+                }
+                </div>
                 {/* <div>{window.localStorage.getItem('USER')}</div> */}
                 <div>{rows}</div>
                 <AddProductModal 
                     // productlist={this.state.PRODUCTS}
                     // onAddProduct = {this.addProduct}
                  />
+            </div>
             </div>
         )
     }

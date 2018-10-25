@@ -76,6 +76,7 @@ class SellerDashBoard extends Component{
 
         return(
             <div className="App">
+            { this.props.user === null ? this.props.history.push('/') : ''}
             <div>
                 <div>
                 {

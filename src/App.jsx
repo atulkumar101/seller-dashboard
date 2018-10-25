@@ -46,7 +46,7 @@ class App extends Component {
       {
         // this.props.user
       }
-        {this.props.user && this.props.user !==null ? this.props.history.push('/sellerdashboard') : ''}
+      {this.props.user && this.props.user !==null ? this.props.history.push('/sellerdashboard') : ''}
 
         <div className="apptitle TextBigSize TextRed">          
            Seller DashBoard

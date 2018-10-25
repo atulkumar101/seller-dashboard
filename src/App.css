@@ -53,3 +53,7 @@
 .MarginTop{
   margin-top: 4px;
 }
+
+.Dib{
+  display: inline-block;
+}

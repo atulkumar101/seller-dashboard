@@ -39,7 +39,7 @@ class ProductList extends Component{
         console.log('Product List props(ProductList.jsx)', this.props);
 
         return(
-            <div className="App">
+            <div className="App Dib">
             <div className="ProductCard">
                 {/* <h2>Product List</h2> */}
                 <div>

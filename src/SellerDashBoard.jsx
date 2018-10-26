@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from "react-redux";
-import { userExist } from "./actions";
+import { userExist, userSignOut } from "./actions";
 import ProductList from './components/ProductList';
 import AddProductModal from './components/AddProductModal';
 import Button from '@material-ui/core/Button';
@@ -21,10 +21,13 @@ class SellerDashBoard extends Component{
         }
     }
 
-    signout = ()=>{
-        const {localStorage} = window;
-        localStorage.removeItem('USER');
-        if(localStorage.getItem('USER')===null)
+    signout = () => {
+        this.props.userSignOut();
+        // const {localStorage} = window;
+        // if(localStorage.getItem('USER') !== null)
+        // {
+        //     localStorage.removeItem('USER');
+        // }
         this.props.history.push('/');
     }
 
@@ -58,6 +61,13 @@ class SellerDashBoard extends Component{
         )
         this.setState({});
     }
+
+    // componentDidMount(){
+    //     this.setState({})
+    //     if(this.props.user === null){
+    //         this.props.history.push('/')
+    //     } 
+    // }
     
     render(){
         const rows = [];
@@ -73,7 +83,6 @@ class SellerDashBoard extends Component{
                 />
             )
         });
-
         return(
             <div className="App">
             { this.props.user === null ? this.props.history.push('/') : ''}
@@ -116,5 +125,5 @@ function mapStateToProps(state){
     // return { productList: state.productList };
 }
 
-export default connect(mapStateToProps,{userExist})(SellerDashBoard);
+export default connect(mapStateToProps,{userExist, userSignOut})(SellerDashBoard);
 // export default connect(({user})=>user,{userExist})(SellerDashBoard);

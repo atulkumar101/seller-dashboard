@@ -1,6 +1,7 @@
 import { 
     SIGN_IN, 
-    USER_EXIST, 
+    USER_EXIST,
+    USER_SIGNOUT, 
     ADD_PRODUCT, 
     DELETE_PRODUCT, 
     EDIT_PRODUCT
@@ -19,6 +20,15 @@ export const userExist = () => {
     const user = localStorage.getItem('USER');
     return {
         type: USER_EXIST,
+        user
+    }
+}
+
+export const userSignOut = () => {
+    const{localStorage} = window;
+    const user = localStorage.removeItem('USER');
+    return {
+        type: USER_SIGNOUT,
         user
     }
 }

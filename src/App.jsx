@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import './App.css';
 import { connect } from 'react-redux';
-import AddProductModal from './components/AddProductModal';
-
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
-// import { Redirect } from "react-router-dom";
+
 import { userExist } from "./actions";
+import './App.css';
 
 class App extends Component {
 
@@ -18,10 +16,6 @@ class App extends Component {
     }
   }
 
-  // handleChange = () => {
-
-  // }
-
   signIn = () => {
     console.log("username : " + this.state.username + " password " + this.state.password);
     const {username,password} = this.state;
@@ -31,7 +25,6 @@ class App extends Component {
       this.props.userExist();
       this.props.history.push("/sellerdashboard");
     }
-
   }
   
   componentDidMount(){
@@ -42,12 +35,8 @@ class App extends Component {
     return (
       <div className="App">
       {
-        // JSON.stringify(this.props)
+        this.props.user ? this.props.history.push('/sellerdashboard') : ''
       }
-      {
-        // this.props.user
-      }
-      {this.props.user && this.props.user !==null ? this.props.history.push('/sellerdashboard') : ''}
 
         <div className="apptitle TextBigSize TextRed">          
            Seller DashBoard
@@ -65,9 +54,6 @@ class App extends Component {
         >
           Sign IN
         </Button>
-        <div>
-          {/* {this.props.errormsg} */}
-        </div>
       </div>
     );
   }

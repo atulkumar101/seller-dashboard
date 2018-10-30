@@ -11,20 +11,15 @@ let products = [
 export default (state = products, action) => {
     switch(action.type){
         case ADD_PRODUCT:
-            const {name, price, description} = action;
-            // const added_product =   {
-            //      productname: name,
-            //      productprice: price,
-            //      productdescription: description
-            //     }
+            const {productDetails} = action;
+            const {productName, productPrice, productDescription} = productDetails
             products.push(
                 {
-                    productname: name, 
-                    productprice: price, 
-                    productdescription: description
+                    productname: productName, 
+                    productprice: productPrice, 
+                    productdescription: productDescription
                 }
             )
-            // return [...products,added_product];
             return [...products];
         case DELETE_PRODUCT:
             const {product} = action;
@@ -32,19 +27,16 @@ export default (state = products, action) => {
                 products.indexOf(product), 1
             )
             return [...products];
-            // productList.splice(
-            //     productList.indexOf(product), 1
-            // )
-            // return productList;
         case EDIT_PRODUCT:
-            const {edit_product, edit_name, edit_price, edit_description} = action;
+            const {edit_product} = action;
+            const edit_productDetails = action.productDetails;
             products.splice(
                 products.indexOf(edit_product),
                 1, 
                 {
-                    productname: edit_name, 
-                    productprice: edit_price, 
-                    productdescription: edit_description
+                    productname: edit_productDetails.productName, 
+                    productprice: edit_productDetails.productPrice, 
+                    productdescription: edit_productDetails.productDescription
                 }
             )
             return [...products];

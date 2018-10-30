@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-
+import {connect} from 'react-redux';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
 
 import {addProduct} from '../actions';
-import {connect} from 'react-redux';
 
 class AddProductModal extends Component{
 
@@ -19,44 +18,37 @@ class AddProductModal extends Component{
 
     addProduct = () => {
         const {productName, productPrice, productDescription} = this.state;
-        this.props.addProduct(productName, productPrice, productDescription);
-        // // console.log("this.state", this.state);
-        // // console.log("this.props", this.props);
-        // const { productName, productPrice, productDescription } = this.state;
-        // // add Product in parent Component
-        // this.props.onAddProduct(productName, productPrice, productDescription);
-        // // console.log("this.props.productlist", this.props.productlist);
-        this.setState({});
+        const productDetails = {productName, productPrice, productDescription};
+        this.props.addProduct(productDetails);
+    }
+
+    handleInputChange = (event) => {
+      this.setState({
+          [event.target.name] : event.target.value
+      })
     }
 
     render(){
         return(
             <div className="App">
                 <h2>Add Product Modal</h2>
-
-                    {/* <Button variant="contained" color="primary">Submit</Button> */}
-                    <Input type="text" name="productName" placeholder="Enter Product Name"
-                    onChange={event => this.setState({productName: event.target.value})}/>
-                    <br />
-                    <Input type="text" name="productDescription" placeholder="Enter Product Description"
-                    onChange={event => this.setState({productDescription: event.target.value})} />
-                    <br />
-                    <Input type="text" name="productPrice" placeholder="Enter Product Price"
-                    onChange={event => this.setState({productPrice: event.target.value})}/>
-                    <br />
-                    <br />
-                    <Button variant="contained" color="primary" onClick={this.addProduct}>
-                    Submit
-                    </Button>
-                
+                <Input type="text" name="productName" placeholder="Enter Product Name"
+                onChange={this.handleInputChange}/>
+                <br />
+                <Input type="text" name="productDescription" placeholder="Enter Product Description"
+                onChange={this.handleInputChange} />
+                <br />
+                <Input type="text" name="productPrice" placeholder="Enter Product Price"
+                onChange={this.handleInputChange}/>
+                <br />
+                <br />
+                <Button variant="contained" color="primary" onClick={this.addProduct}>
+                Submit
+                </Button>
             </div>
         )
     }
 
 }
 
-function mapStateToProp(state){
-    return state;
-}
-
-export default connect(mapStateToProp, {addProduct})(AddProductModal);
+export default connect(null, {addProduct})(AddProductModal);

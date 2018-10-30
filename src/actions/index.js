@@ -1,19 +1,10 @@
 import { 
-    SIGN_IN, 
     USER_EXIST,
     USER_SIGNOUT, 
     ADD_PRODUCT, 
     DELETE_PRODUCT, 
     EDIT_PRODUCT
 } from "../constants";
-
-export function logUser(email){
-    const action = {
-        type: SIGN_IN,
-        email
-    }
-    return action;
-}
 
 export const userExist = () => {
     const {localStorage} = window;
@@ -33,12 +24,10 @@ export const userSignOut = () => {
     }
 }
 
-export function addProduct(name, price, description) {
+export function addProduct(productDetails) {
     const action = {
         type: ADD_PRODUCT,
-        name,
-        price,
-        description
+        productDetails
     }
     return action;
 }
@@ -46,19 +35,16 @@ export function addProduct(name, price, description) {
 export function deleteProduct(product) {
     const action = {
         type: DELETE_PRODUCT,
-        // productList,
         product
     }
     return action;
 }
 
-export function editProduct(edit_product, edit_name, edit_price, edit_description) {
+export function editProduct(edit_product, productDetails) {
     const action = {
         type: EDIT_PRODUCT,
         edit_product,
-        edit_name, 
-        edit_price, 
-        edit_description
+        productDetails
     }
     return action;
 }

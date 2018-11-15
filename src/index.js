@@ -7,6 +7,7 @@ import { createStore } from 'redux';
 
 import './index.css';
 import App from './App';
+import TestComponent from './components/TestComponent';
 import SellerDashBoard from './SellerDashBoard'
 import * as serviceWorker from './serviceWorker';
 import combinereducers from './reducers';
@@ -21,6 +22,7 @@ ReactDOM.render(
             <Switch>
                 <Route exact path = "/" component={App}/>
                 <Route exact path = "/sellerdashboard" component={SellerDashBoard}/>
+                <Route path = "/test" component={TestComponent}/>    
             </Switch>
         </BrowserRouter>
     </Provider>, document.getElementById('root'));

@@ -2,9 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import Input from '@material-ui/core/Input';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import { userExist } from "./actions";
 import './App.css';
+
+const theme = createMuiTheme({
+  palette: {
+      primary: {
+          main: "#2A2A2A",//"#ff8f00",
+          contrastText: "#fcfcfc"//"black"
+           }, 
+      secondary: {
+           main: '#841958',//'#616161',
+           contrastText:"white" 
+           },     
+      type:'dark' 
+  },
+});
 
 class App extends Component {
 
@@ -26,6 +41,10 @@ class App extends Component {
       this.props.history.push("/sellerdashboard");
     }
   }
+
+  testComponent = () => {
+    this.props.history.push("/test");
+  }
   
   componentDidMount(){
     this.props.userExist();
@@ -33,11 +52,12 @@ class App extends Component {
 
   render() {
     return (
+
+      <MuiThemeProvider theme={theme}>
       <div className="App">
       {
         this.props.user ? this.props.history.push('/sellerdashboard') : ''
       }
-
         <div className="apptitle TextBigSize TextRed">          
            Seller DashBoard
         </div>
@@ -54,7 +74,13 @@ class App extends Component {
         >
           Sign IN
         </Button>
+        <Button variant="contained" color="primary"
+          onClick={this.testComponent}
+        >
+          Test Component
+        </Button>
       </div>
+      </MuiThemeProvider>
     );
   }
 }

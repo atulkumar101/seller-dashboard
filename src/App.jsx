@@ -45,6 +45,14 @@ class App extends Component {
   testComponent = () => {
     this.props.history.push("/test");
   }
+
+  testComponent2 = () => {
+    this.props.history.push("/test2");
+  }
+
+  testComponent3 = () => {
+    this.props.history.push("/test3");
+  }
   
   componentDidMount(){
     this.props.userExist();
@@ -74,11 +82,31 @@ class App extends Component {
         >
           Sign IN
         </Button>
+        <br />
+        <br />
+
         <Button variant="contained" color="primary"
           onClick={this.testComponent}
         >
           Test Component
         </Button>
+        <br />
+        <br />
+        <Button variant="contained" color="primary"
+          onClick={this.testComponent2}
+        >
+          Test Component 2
+        </Button>
+        <br />
+        <br />
+        <Button variant="contained" color="primary"
+          onClick={this.testComponent3}
+        >
+          Test Component 3
+        </Button>
+        <br />
+        <br />
+
       </div>
       </MuiThemeProvider>
     );
